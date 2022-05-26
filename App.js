@@ -1,34 +1,36 @@
-import { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { useState } from "react";
+import { StyleSheet, Text, View, TextInput, Button, FlatList } from "react-native";
+import MyButton from "./components/MyButton";
+import TodoInput from "./components/TodoInput";
+import TodoItem from "./components/TodoItem";
 
 export default function App() {
-
-  const [enteredTodo, setEnteredTodo] = useState('');
+  
 
   const [todos, setTodos] = useState([]);
 
+ 
 
-  function todoInputHandler(enteredText) {
-    setEnteredTodo(enteredText); 
-
-  };
-
-    //Updates the existing list of todos with the new todo
-  function addTodoHandler(){
-    setTodos(currentTodos => [...currentTodos, enteredTodo])
-  };
-
-  
-
+  //Updates the existing list of todos with the new todo
+  function addTodoHandler(enteredTodoText) {
+    setTodos((currentTodos) => [...currentTodos, {text: enteredTodoText, key: Math.random().toString()}]);
+  }
 
   return (
     <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <TextInput style={styles.TextInput} placeholder='To Do...' onChangeText={todoInputHandler} />
-        <Button title='Add' onPress={addTodoHandler} />
-      </View>
+
+
+     <TodoInput onAddTodo={addTodoHandler} />
+
       <View style={styles.listView}>
-        {todos.map((todo) => <Text key={todo}>{todo}</Text>)}
+        <FlatList data = {todos} renderItem={itemData => {
+          
+          return <TodoItem text={itemData.item.text} />;
+
+        }} alwaysBounceVertical={false} />
+          
+           
+      
       </View>
     </View>
   );
@@ -39,31 +41,11 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 50,
     paddingHorizontal: 20,
-  
   },
-  inputContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 25,
-    borderBottomWidth: 2,
-    borderBottomColor: "#ccc",
-    
-
-  },
-  TextInput: {
-    borderWidth: 2,
-    borderolor: "#000",
-    width: "70%",
-    marginRight: 10,
-    padding: 5,
-
-
-  },
+ 
   listView: {
+    width: "100%",
     flex: 4,
-    
+  },
 
-  }
 });
