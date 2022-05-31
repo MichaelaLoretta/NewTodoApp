@@ -1,11 +1,13 @@
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, Pressable, View} from 'react-native';
 
 
 function MyButton(props) {
     return (
-        <TouchableOpacity style={styles.btnBg}>
+        <Pressable>
+          <View style={styles.btnBg}>
             <Text style={styles.btnText}>{props.title}</Text>
-        </TouchableOpacity>
+            </View>
+        </Pressable>
     )
 };
 

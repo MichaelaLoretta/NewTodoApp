@@ -1,4 +1,4 @@
-import { View, Button, TextInput, StyleSheet } from "react-native";
+import { View, Button, TextInput, StyleSheet, Modal, Image } from "react-native";
 import { useState } from "react";
 import MyButton from "./MyButton";
 
@@ -15,18 +15,35 @@ function TodoInput(props) {
   }
 
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.TextInput}
-        placeholder="To Do..."
-        onChangeText={todoInputHandler}
-        value={enteredTodoText}
-      />
-      <View style={styles.btnContainer}>
-        <MyButton title="Cancel" />
-        <Button title="Add" onPress={addTodoHandler} />
+    <Modal visible={props.visible} animationType="slide">
+      <View style={styles.inputContainer}>
+        <View style={styles.imageContainer}>
+          <Image style={styles.image} source={require("../assets/45.png")} />
+          <Image source={require("../assets/logo.png")} />
+        </View>
+
+        <TextInput
+          style={styles.TextInput}
+          placeholder="To Do..."
+          onChangeText={todoInputHandler}
+          value={enteredTodoText}
+        />
+
+        <View style={styles.btnContainer}>
+          
+            <Button title="Cancel" color={"#52579D"} onPress={props.onCancel} />
+          
+          
+            <Button
+              style={styles.button}
+              title="Add"
+              onPress={addTodoHandler}
+              color={"#52579D"}
+            />
+          
+        </View>
       </View>
-    </View>
+    </Modal>
   );
 }
 
@@ -35,25 +52,32 @@ export default TodoInput;
 const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "flex-end",
-    marginBottom: 10,
-    borderBottomWidth: 2,
-    borderBottomColor: "#ccc",
+    marginTop: 10,
+    alignItems:"center",
   },
   TextInput: {
-    borderWidth: 2,
-    borderRadius: 5,
-    borderColor: "#000",
+    borderWidth: 3,
+    borderRadius: 8,
+    borderColor: "#FDCDB8",
     width: "70%",
-    marginRight: 10,
+    height: 40,
     padding: 5,
-  },
+    fontSize: 20,
+ },
   btnContainer: {
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: 15,
     flexDirection: "row",
+    
+
+  },
+
+  imageContainer: {
     alignItems: "center",
-    justifyContent: "space-around",
+    marginTop: 40,
+    marginBottom: 15,
+  },
+  image: {
+    width: 145,
+    height: 145,
   },
 });

@@ -1,10 +1,15 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Pressable } from "react-native";
 
 function TodoItem(props) {
   return (
-    <View style={styles.todoItem}>
-      <Text style={styles.todoText}>{props.text}</Text>
-    </View>
+    <Pressable
+      onPress={props.onDeleteItem.bind(this, props.id)}
+      style={({ pressed }) => pressed && styles.pressedItem}
+    >
+      <View style={styles.todoItem}>
+        <Text style={styles.todoText}>{props.text}</Text>
+      </View>
+    </Pressable>
   );
 }
 
@@ -16,13 +21,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 6,
     padding: 5,
-    width: "100%",
-    borderRadius: 5,
+    width: 230,
+    borderRadius: 8,
   },
 
   todoText: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 22,
+  },
+
+  pressedItem: {
+    opacity: 0.6,
   },
 });
