@@ -43,11 +43,6 @@ export default function App() {
         <Image style={styles.image} source={require("./assets/45.png")} />
         <Image source={require("./assets/logo.png")} />
       </View>
-      <Button
-        title="Add New"
-        color={"#52579D"}
-        onPress={startAddTodoHandler}
-      />
 
       <TodoInput
         onAddTodo={addTodoHandler}
@@ -68,6 +63,15 @@ export default function App() {
             );
           }}
           alwaysBounceVertical={false}
+        />
+      </View>
+
+      <View style={styles.bottomView}>
+        <Button
+          title="Add New"
+          color={"#52579D"}
+          onPress={startAddTodoHandler}
+          
         />
       </View>
     </View>
@@ -95,5 +99,8 @@ const styles = StyleSheet.create({
   image: {
     width: 145,
     height: 145,
+  },
+  bottomView: {
+    marginVertical: 20,
   }
 });

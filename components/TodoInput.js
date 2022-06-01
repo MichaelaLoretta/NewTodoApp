@@ -1,6 +1,5 @@
 import { View, Button, TextInput, StyleSheet, Modal, Image } from "react-native";
 import { useState } from "react";
-import MyButton from "./MyButton";
 
 function TodoInput(props) {
   const [enteredTodoText, setEnteredTodoText] = useState("");
@@ -30,17 +29,14 @@ function TodoInput(props) {
         />
 
         <View style={styles.btnContainer}>
-          
-            <Button title="Cancel" color={"#52579D"} onPress={props.onCancel} />
-          
-          
-            <Button
-              style={styles.button}
-              title="Add"
-              onPress={addTodoHandler}
-              color={"#52579D"}
-            />
-          
+          <Button title="Cancel" color={"#52579D"} onPress={props.onCancel} />
+
+          <Button
+            style={styles.button}
+            title="Add"
+            onPress={addTodoHandler}
+            color={"#52579D"}
+          />
         </View>
       </View>
     </Modal>
@@ -52,23 +48,22 @@ export default TodoInput;
 const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
-    marginTop: 10,
-    alignItems:"center",
+    marginTop: "50%",
+    alignItems: "center",
   },
   TextInput: {
-    borderWidth: 3,
+    borderWidth: 2,
     borderRadius: 8,
     borderColor: "#FDCDB8",
     width: "70%",
     height: 40,
     padding: 5,
+    marginTop: 30,
     fontSize: 20,
- },
+  },
   btnContainer: {
     marginTop: 15,
     flexDirection: "row",
-    
-
   },
 
   imageContainer: {
