@@ -101,6 +101,6 @@ const styles = StyleSheet.create({
     height: 145,
   },
   bottomView: {
-    marginVertical: 20,
+    marginVertical: 30,
   }
 });

@@ -21,22 +21,28 @@ function TodoInput(props) {
           <Image source={require("../assets/logo.png")} />
         </View>
 
-        <TextInput
-          style={styles.TextInput}
-          placeholder="To Do..."
-          onChangeText={todoInputHandler}
-          value={enteredTodoText}
-        />
+        <View style={styles.input}>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="To Do..."
+            onChangeText={todoInputHandler}
+            value={enteredTodoText}
+          />
+        </View>
 
         <View style={styles.btnContainer}>
-          <Button title="Cancel" color={"#52579D"} onPress={props.onCancel} />
+          <View style={styles.btn}>
+            <Button title="Cancel" color={"#52579D"} onPress={props.onCancel} />
+          </View>
 
-          <Button
-            style={styles.button}
-            title="Add"
-            onPress={addTodoHandler}
-            color={"#52579D"}
-          />
+          <View style={styles.btn}>
+            <Button
+              style={styles.button}
+              title="Add"
+              onPress={addTodoHandler}
+              color={"#52579D"}
+            />
+          </View>
         </View>
       </View>
     </Modal>
@@ -49,7 +55,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
     marginTop: "50%",
-    alignItems: "center",
+ 
   },
   TextInput: {
     borderWidth: 2,
@@ -61,9 +67,19 @@ const styles = StyleSheet.create({
     marginTop: 30,
     fontSize: 20,
   },
+  input: {
+    alignItems:"center",
+
+  },
   btnContainer: {
-    marginTop: 15,
+    marginVertical: 20,
     flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
+  btn: {
+    
+
   },
 
   imageContainer: {
